@@ -24,9 +24,25 @@ class Erna_hrungVC: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if let navController = navigationController {
+            System.clearNavigationBar(forBar: navController.navigationBar)
+            navController.view.backgroundColor = .clear
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToTierischeProdukte" {
+            let vc = segue.destination as! Erna_hrungSubVC
+            vc.cellLabelTexts = TrackerRessources().tierischeProdukteListe
+        } else if segue.identifier == "goToExotischesObstUndGemüse" {
+            let vc = segue.destination as! Erna_hrungSubVC
+            vc.cellLabelTexts = TrackerRessources().exotischesObstUndGemüseListe
+        }
     }
     
     //CUSTOM FUNCS
+
     
     //ACTIONS
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -59,9 +75,9 @@ extension Erna_hrungVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
-            performSegue(withIdentifier: "goToSubVC", sender: nil)
+            performSegue(withIdentifier: "goToTierischeProdukte", sender: nil)
         } else if indexPath.row == 3 {
-            performSegue(withIdentifier: "goToSubVC", sender: nil)
+            performSegue(withIdentifier: "goToExotischesObstUndGemüse", sender: nil)
         }
     }
     

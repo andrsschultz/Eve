@@ -17,10 +17,10 @@ class Erna_hrungCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        cellView.layer.shadowColor = UIColor.black.cgColor
-//        cellView.layer.shadowOpacity = 1
-//        cellView.layer.shadowOffset = CGSize.zero
-//        cellView.layer.shadowRadius = 10
+        cellView.layer.shadowColor = UIColor.black.cgColor
+        cellView.layer.shadowOpacity = 0.20
+        cellView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cellView.layer.shadowRadius = 3.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

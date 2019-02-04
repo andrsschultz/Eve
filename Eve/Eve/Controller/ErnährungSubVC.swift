@@ -13,6 +13,10 @@ class Erna_hrungSubVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     @IBOutlet var tableView: UITableView!
     
+    var cellLabelTexts: [String]?
+    
+    var selectedIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,13 +27,13 @@ class Erna_hrungSubVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return cellLabelTexts!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ErnährungSubCell", for: indexPath) 
         
-        cell.textLabel?.text = "Nice"
+        cell.textLabel?.text = cellLabelTexts![indexPath.row]
         
         return cell
     }
