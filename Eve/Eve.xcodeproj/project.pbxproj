@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		458CAC1B22083E3400B11457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CAC1A22083E3400B11457 /* AppDelegate.swift */; };
-		458CAC1D22083E3400B11457 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CAC1C22083E3400B11457 /* ViewController.swift */; };
 		458CAC2022083E3400B11457 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458CAC1E22083E3400B11457 /* Main.storyboard */; };
 		458CAC2322083E3400B11457 /* Eve.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 458CAC2122083E3400B11457 /* Eve.xcdatamodeld */; };
 		458CAC2522083E3600B11457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458CAC2422083E3600B11457 /* Assets.xcassets */; };
 		458CAC2822083E3600B11457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458CAC2622083E3600B11457 /* LaunchScreen.storyboard */; };
+		458CAC302208413800B11457 /* TrackerPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CAC2F2208413800B11457 /* TrackerPageVC.swift */; };
+		458CAC372208442900B11457 /* ErnährungVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CAC362208442900B11457 /* ErnährungVC.swift */; };
+		458CAC392208465600B11457 /* ErnährungCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CAC382208465600B11457 /* ErnährungCell.swift */; };
+		458CAC3B220848D700B11457 /* TrackerRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CAC3A220848D700B11457 /* TrackerRessources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		458CAC1722083E3400B11457 /* Eve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458CAC1A22083E3400B11457 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		458CAC1C22083E3400B11457 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		458CAC1F22083E3400B11457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		458CAC2222083E3400B11457 /* Eve.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eve.xcdatamodel; sourceTree = "<group>"; };
 		458CAC2422083E3600B11457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		458CAC2722083E3600B11457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		458CAC2922083E3600B11457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		458CAC2F2208413800B11457 /* TrackerPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerPageVC.swift; sourceTree = "<group>"; };
+		458CAC362208442900B11457 /* ErnährungVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErnährungVC.swift"; sourceTree = "<group>"; };
+		458CAC382208465600B11457 /* ErnährungCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErnährungCell.swift"; sourceTree = "<group>"; };
+		458CAC3A220848D700B11457 /* TrackerRessources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRessources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,58 @@
 		458CAC1922083E3400B11457 /* Eve */ = {
 			isa = PBXGroup;
 			children = (
+				458CAC352208440600B11457 /* Ressources */,
+				458CAC342208440200B11457 /* Helper */,
+				458CAC33220843FD00B11457 /* Controller */,
+				458CAC32220843F900B11457 /* View */,
+				458CAC31220843F500B11457 /* Model */,
 				458CAC1A22083E3400B11457 /* AppDelegate.swift */,
-				458CAC1C22083E3400B11457 /* ViewController.swift */,
 				458CAC1E22083E3400B11457 /* Main.storyboard */,
-				458CAC2422083E3600B11457 /* Assets.xcassets */,
 				458CAC2622083E3600B11457 /* LaunchScreen.storyboard */,
 				458CAC2922083E3600B11457 /* Info.plist */,
 				458CAC2122083E3400B11457 /* Eve.xcdatamodeld */,
 			);
 			path = Eve;
+			sourceTree = "<group>";
+		};
+		458CAC31220843F500B11457 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		458CAC32220843F900B11457 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				458CAC382208465600B11457 /* ErnährungCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		458CAC33220843FD00B11457 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				458CAC2F2208413800B11457 /* TrackerPageVC.swift */,
+				458CAC362208442900B11457 /* ErnährungVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		458CAC342208440200B11457 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		458CAC352208440600B11457 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				458CAC2422083E3600B11457 /* Assets.xcassets */,
+				458CAC3A220848D700B11457 /* TrackerRessources.swift */,
+			);
+			path = Ressources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				458CAC1D22083E3400B11457 /* ViewController.swift in Sources */,
+				458CAC3B220848D700B11457 /* TrackerRessources.swift in Sources */,
+				458CAC372208442900B11457 /* ErnährungVC.swift in Sources */,
+				458CAC302208413800B11457 /* TrackerPageVC.swift in Sources */,
 				458CAC2322083E3400B11457 /* Eve.xcdatamodeld in Sources */,
 				458CAC1B22083E3400B11457 /* AppDelegate.swift in Sources */,
+				458CAC392208465600B11457 /* ErnährungCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
