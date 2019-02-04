@@ -15,6 +15,8 @@ class Erna_hrungVC: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var nextButton: UIButton!
     
+
+    
     //OVERRIDE FUNCS
 
     override func viewDidLoad() {
@@ -28,6 +30,7 @@ class Erna_hrungVC: UIViewController {
     
     //ACTIONS
     @IBAction func nextButtonTapped(_ sender: Any) {
+        
     }
     
 
@@ -42,10 +45,24 @@ extension Erna_hrungVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ErnährungCell", for: indexPath) as! Erna_hrungCell
         
         cell.mainLabel.text = TrackerRessources().mainLabelTexts[indexPath.row]
-        cell.subLabel.text = "0x"
+        cell.subLabel.text = TrackerRessources().subLabelTexts[indexPath.row]
         cell.iconImageView.image = UIImage(named: TrackerRessources().imageStrings[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 || indexPath.row == 3 {
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            performSegue(withIdentifier: "goToSubVC", sender: nil)
+        } else if indexPath.row == 3 {
+            performSegue(withIdentifier: "goToSubVC", sender: nil)
+        }
     }
     
     
