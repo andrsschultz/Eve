@@ -10,6 +10,8 @@ import UIKit
 
 class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
+    
+    //PROPERTIES
     lazy var orderedViewControllers: [UIViewController] = {
         return [self.newVc(viewController: "ErnährungNC"),
                 self.newVc(viewController: "WasserNC"),
@@ -19,6 +21,9 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
     
     var pageControl = UIPageControl()
     var button = UIButton()
+    
+    
+    //OVERRIDE FUNCS
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +44,15 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
         
     }
     
+    
+    
+    //CUSTOM FUNCS
 
     func newVc(viewController: String) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewController)
     }
     
     func configurePageControl() {
-        // The total number of pages that are available is based on how many available colors we have.
         pageControl = UIPageControl(frame: CGRect(x: 0,y: UIScreen.main.bounds.maxY - 50,width: UIScreen.main.bounds.width,height: 50))
         self.pageControl.numberOfPages = orderedViewControllers.count
         self.pageControl.currentPage = 0
@@ -55,6 +62,8 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
         self.view.addSubview(pageControl)
     }
     
+    
+    //configuration of the next buttton in the lower right corner
     func configureButton() {
         button = UIButton(frame: CGRect(x: self.view.frame.width-20-64, y: self.view.frame.height-30-64, width: 64, height: 64))
         button.backgroundColor = .clear
@@ -64,9 +73,14 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
     }
     
     @objc func buttonClicked() {
-        goToNextPage()
+        if pageControl.currentPage == 3 {
+            //Tracking abschließen
+        } else {
+            goToNextPage()
+        }
     }
     
+    //change image of button depending on current position
     func adjustButtonImage() {
         switch pageControl.currentPage {
         case 0:
@@ -136,7 +150,6 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
         let pageContentViewController = pageViewController.viewControllers![0]
         self.pageControl.currentPage = orderedViewControllers.index(of: pageContentViewController)!
     }
-    
     
     
     func goToNextPage(animated: Bool = true) {
