@@ -21,3 +21,11 @@ struct WasserRessources {
     let subLabelTexts = ["0x","0x","0x","0x"]
     let imageStrings = ["waschmaschine.png","spülmaschine.png","duschbrause.png","badewanne.png"]
 }
+
+struct MobilitätRessources {
+    let labelTexts = ["Auto - 4 Stunden", "Bus - 4 Stunden","Bahn - 4 Stunden","Motorrad - 4 Stunden","Flugzeug - 4 Stunden"]
+}
+
+struct KonsumRessources {
+    let labelTexts = ["dueji", "deijd"]
+}

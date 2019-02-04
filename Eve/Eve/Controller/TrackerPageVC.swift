@@ -12,10 +12,13 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
     
     lazy var orderedViewControllers: [UIViewController] = {
         return [self.newVc(viewController: "ErnährungNC"),
-                self.newVc(viewController: "WasserNC")]
+                self.newVc(viewController: "WasserNC"),
+                self.newVc(viewController: "MobilitätNC"),
+                self.newVc(viewController: "Abfall&KonsumNC")]
     }()
     
     var pageControl = UIPageControl()
+    var button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,7 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
         
         self.delegate = self
         configurePageControl()
+        configureButton()
         
     }
     
@@ -49,6 +53,33 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
         self.pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.6745098039, green: 0.6745098039, blue: 0.6745098039, alpha: 1)
         self.pageControl.currentPageIndicatorTintColor = UIColor.black
         self.view.addSubview(pageControl)
+    }
+    
+    func configureButton() {
+        button = UIButton(frame: CGRect(x: self.view.frame.width-20-64, y: self.view.frame.height-30-64, width: 64, height: 64))
+        button.backgroundColor = .clear
+        button.setImage(UIImage(named: "weiterButton.png"), for: .normal)
+        button.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
+        self.view.addSubview(button)
+    }
+    
+    @objc func buttonClicked() {
+        goToNextPage()
+    }
+    
+    func adjustButtonImage() {
+        switch pageControl.currentPage {
+        case 0:
+            self.button.setImage(UIImage(named: "weiterButton.png"), for: .normal)
+        case 1:
+            button.setImage(UIImage(named: "weiterButtonBlau.png"), for: .normal)
+        case 2:
+            button.setImage(UIImage(named: "weiterButtonRosa.png"), for: .normal)
+        case 3:
+            button.setImage(UIImage(named: "fertigButton.png"), for: .normal)
+        default:
+            button.setImage(UIImage(named: "weiterButton.png"), for: .normal)
+        }
     }
     
     // MARK: Data source functions.
@@ -71,6 +102,7 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
             return nil
         }
         
+        adjustButtonImage()
         return orderedViewControllers[previousIndex]
     }
     
@@ -94,6 +126,7 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
             return nil
         }
         
+        adjustButtonImage()
         return orderedViewControllers[nextIndex]
     }
 
@@ -103,4 +136,14 @@ class TrackerPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageV
         let pageContentViewController = pageViewController.viewControllers![0]
         self.pageControl.currentPage = orderedViewControllers.index(of: pageContentViewController)!
     }
+    
+    
+    
+    func goToNextPage(animated: Bool = true) {
+        guard let currentViewController = self.viewControllers?.first else { return }
+        guard let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) else { return }
+        setViewControllers([nextViewController], direction: .forward, animated: animated, completion: { completed in self.delegate?.pageViewController?(self, didFinishAnimating: true, previousViewControllers: [], transitionCompleted: completed); self.adjustButtonImage() })
+    }
+    
+
 }
